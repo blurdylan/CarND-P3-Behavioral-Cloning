@@ -29,17 +29,13 @@ TARGET_SIZE = (64, 64)
 
 
 def change_brightness(image):
-    # convert to HSV so that its easy to adjust brightness
     image1 = cv2.cvtColor(image,cv2.COLOR_RGB2HSV)
 
-    # randomly generate the brightness reduction factor
-    # Add a constant so that it prevents the image from being completely dark
+    # randomly generate the brightness reduction
     random_bright = .25+np.random.uniform()
-
-    # Apply the brightness reduction to the V channel
+    # Apply
     image1[:,:,2] = image1[:,:,2]*random_bright
-
-    # convert to RBG again
+    # Go back to rgb
     image1 = cv2.cvtColor(image1,cv2.COLOR_HSV2RGB)
     return image1
 
@@ -47,7 +43,11 @@ def change_brightness(image):
 def resize_to_target_size(image):
     return cv2.resize(image, TARGET_SIZE)
 
-
+'''
+This is done so we could be able to take
+only the needed part of the image
+(without the car's hood and the horizon)
+'''
 def crop_and_resize(image):
     # The input image of dimensions 160x320x3
     # Output image of size 64x64x3
