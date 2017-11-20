@@ -63,7 +63,7 @@ The learning rate wasn't tuned manually, the model used an adam optimizer. (line
 
 I had little influence on the data, I massively used the data provided by udacity
 
-###Model Architecture and Training Strategy
+### Model Architecture and Training Strategy
 
 #### 1. Solution Design Approach
 
