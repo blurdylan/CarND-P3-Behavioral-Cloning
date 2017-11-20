@@ -1,8 +1,8 @@
-#**Behavioral Cloning**
+# **Behavioral Cloning**
 
-##Write-up Template
+## Write-up Template
 
-###A write-up describing my work on the behavioral cloning project.
+### A write-up describing my work on the behavioral cloning project.
 
 ---
 
@@ -18,12 +18,12 @@ The goals / steps of this project are the following:
 
 ## Rubric Points
 
-###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
+### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
 
 ---
-###Files Submitted & Code Quality
+### Files Submitted & Code Quality
 
-####1. Submission includes all required files and can be used to run the simulator in autonomous mode
+#### 1. Submission includes all required files and can be used to run the simulator in autonomous mode
 
 My project includes the following files:
 * model.py containing the script to create and train the model
@@ -31,19 +31,19 @@ My project includes the following files:
 * model.h5 containing a trained convolution neural network 
 * writeup_report.md summarizing the results obtained
 
-####2. Submission includes functional code
+#### 2. Submission includes functional code
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
 ```sh
 python drive.py model.json
 ```
 
-####3. Submission code is usable and readable
+#### 3. Submission code is usable and readable
 
 My model.py file contains the code for training and saving the convolution neural network. The file shows the all pipeline I used for training and validating the model, and it contains comments to explain how the code works.
 
-###Model Architecture and Training Strategy
+### Model Architecture and Training Strategy
 
-####1. An appropriate model architecture has been employed
+#### 1. An appropriate model architecture has been employed
 
 1. **Layer 1**: Convolutional layer with 32 5x5 filters, followed by ELU activation
 2. **Layer 2**: Convolutional layer with 16 3x3 filters, ELU activation, Dropout(0.4) and 2x2 max pool
@@ -51,21 +51,21 @@ My model.py file contains the code for training and saving the convolution neura
 4. **Layer 4**: Fully connected layer with 1024 neurons, Dropout(0.3) and ELU activation
 5. **Layer 5**: Fully connected layer with 1024 neurons, Dropout(0.3) and ELU activation
 
-####2. Attempts to reduce overfitting in the model
+#### 2. Attempts to reduce overfitting in the model
 
 The model contains dropout layers in order to reduce overfitting. (line 137 & 143)
 
-####3. Model parameter tuning
+#### 3. Model parameter tuning
 
 The learning rate wasn't tuned manually, the model used an adam optimizer. (line 167)
 
-####4. Appropriate training data
+#### 4. Appropriate training data
 
 I had little influence on the data, I massively used the data provided by udacity
 
 ###Model Architecture and Training Strategy
 
-####1. Solution Design Approach
+#### 1. Solution Design Approach
 
 The overall strategy for deriving a model architecture was to get a model that would adapt easily with the changing steering angles and be able to train fully with less epochs (though I am using a high batch size)
 
@@ -79,7 +79,7 @@ Adjusting the brightness also helps to focus on the road. During this process on
 
 At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
 
-####2. Final Model Architecture
+#### 2. Final Model Architecture
 
 The final model architecture consisted of a convolution neural network with the following layers and layer sizes
 
@@ -124,14 +124,13 @@ Trainable params: 3,304,609
 Non-trainable params: 0
 ```
 
-####3. Creation of the Training Set & Training Process
+#### 3. Creation of the Training Set & Training Process
 
 I used only the dataset provided by udacity (The dataset contains JPG images of dimensions 160x320x3), this could be made much better with my own dataset however, time constraints me.
 
 To augment the data set, I also flipped images and angles thinking that this would help workout for the bias that exists on the track. This could also be solved by driving reversely on the track, this may add more right turns to the data set
 
 After the collection process, I had about number of data points. I then preprocessed this data by cropping and resizing (iteratively) them to a reasonable size which will help improve training
-
 
 I finally randomly shuffled the data set and put 3000 of the 20.000 images generated using the generator data into a validation set. No test set was used.
 
