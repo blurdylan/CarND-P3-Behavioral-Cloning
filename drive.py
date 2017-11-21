@@ -15,7 +15,6 @@ from io import BytesIO
 from keras.models import model_from_json
 from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array
 
-import tensorflow as tf
 from model import preprocess_image
 
 

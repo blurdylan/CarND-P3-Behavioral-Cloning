@@ -49,7 +49,7 @@ def change_brightness(image):
     return image1
 
 
-def preprocess(image):
+def preprocess_image(image):
     # Preprocess image
     image = change_size_and_crop(image)
     image = image.astype(np.float32)
